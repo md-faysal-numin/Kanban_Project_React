@@ -1,0 +1,83 @@
+.board-navbar {
+  display: flex;
+  /* outline: 1px solid red; */
+
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 80%;
+  margin: auto;
+}
+
+.board-section {
+  display: flex;
+  /* width: 100%; */
+  height: 100vh;
+  justify-content: center;
+  /* align-items: center; */
+  /* outline: 2px solid red; */
+}
+
+.box {
+  border: 2px solid black;
+  height: 100%;
+  flex: 1;
+}
+.box-heading {
+  text-align: center;
+  background-color: cadetblue;
+  font-size: 1.5rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tasks-container {
+  /* outline: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.task {
+  padding: 0.8rem;
+  border: 2px solid grey;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.task-detail {
+  width: 60%;
+}
+.task-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  border: 2px solid grey;
+  border-radius: 10px;
+  gap: 1rem;
+}
+.form button {
+  align-self: auto;
+}
+.form input {
+  width: 100%;
+}
+
+.assign-user-container span {
+  color: red;
+}
