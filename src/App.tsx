@@ -29,9 +29,9 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Route>
     ),
-    {
-      basename: "/Kanban_Project_React",
-    }
+    // {
+    //   basename: "/Kanban_Project_React",
+    // }
   );
 
   return <RouterProvider router={router} />;

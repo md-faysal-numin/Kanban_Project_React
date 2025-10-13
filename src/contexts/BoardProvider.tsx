@@ -4,8 +4,10 @@ import localStorageUtil from "../utility/localStorageUtil";
 
 type BoardContextType = {
   tasksObj: Task;
+  userObj: User;
   deleteTask: (taskId: string) => void;
   setTasksObj: React.Dispatch<React.SetStateAction<Task>>;
+  setUserObj: React.Dispatch<React.SetStateAction<User>>;
 };
 
 const BoardContext = createContext<BoardContextType | undefined>(undefined);
@@ -23,8 +25,11 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [tasksObj, setTasksObj] = useState<Task>(
     localStorageUtil.get("Tasks") || {}
   );
+  const [userObj, setUserObj] = useState<User>(
+    localStorageUtil.get("User") || {}
+  );
   // const [editTask, setEditTask] = useState(false);
-  const userObj: User = localStorageUtil.get("User")!;
+  // const userObj: User = localStorageUtil.get("User")!;
 
   const deleteTask = (taskId: string) => {
     const deleteTaskUsers = tasksObj[taskId].assigned.split(",");
@@ -34,19 +39,22 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
         (id: string) => id !== taskId
       );
     }
-    localStorage.setItem("User", JSON.stringify(userObj));
+    localStorageUtil.set("User", userObj);
 
     const newTasksObj: Task = Object.fromEntries(
       Object.entries(tasksObj).filter(([key]) => key !== taskId)
     );
-    localStorage.setItem("Tasks", JSON.stringify(newTasksObj));
+    localStorageUtil.set("Tasks", newTasksObj);
 
     setTasksObj(newTasksObj);
+    setUserObj(userObj);
     alert("Deleted Successfully");
   };
 
   return (
-    <BoardContext.Provider value={{ deleteTask, tasksObj, setTasksObj }}>
+    <BoardContext.Provider
+      value={{ userObj, tasksObj, setUserObj, setTasksObj, deleteTask }}
+    >
       {children}
     </BoardContext.Provider>
   );

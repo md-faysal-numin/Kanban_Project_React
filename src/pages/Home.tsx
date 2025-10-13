@@ -1,8 +1,10 @@
 // import React from "react";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import useRedirectIfLoggedIn from "../utility/useRedirectIfLoggedIn";
 
 const Home = () => {
+  useRedirectIfLoggedIn();
   return (
     <div className="flex flex-col justify-center items-center h-dvh">
       <h1 className="text-shadow-blue-500 text-2xl font-bold">Kanban Board</h1>

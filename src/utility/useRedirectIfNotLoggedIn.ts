@@ -5,7 +5,7 @@ const useRedirectIfNotLoggedIn = () => {
 
   if (!sessionStorage.getItem("isLoggedIn")) {
     setTimeout(() => {
-      navigate("/register");
+      navigate("/login");
     }, 300);
   }
 };

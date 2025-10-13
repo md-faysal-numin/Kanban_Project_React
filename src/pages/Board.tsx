@@ -3,13 +3,12 @@ import Button from "../components/Button";
 import TaskSection from "../components/TaskSection";
 import useRedirectIfNotLoggedIn from "../utility/useRedirectIfNotLoggedIn";
 import { useNavigate } from "react-router-dom";
-import localStorageUtil from "../utility/localStorageUtil";
-import type { User } from "../types";
+
 import { useBoard } from "../contexts/BoardProvider";
 
 const Board = () => {
   const navigate = useNavigate();
-  const { tasksObj } = useBoard();
+  const { tasksObj, userObj } = useBoard();
   useRedirectIfNotLoggedIn();
 
   const handleLogoutClick = useCallback(() => {
@@ -18,7 +17,7 @@ const Board = () => {
   }, []);
 
   const username = sessionStorage.getItem("isLoggedIn")!;
-  const userObj: User = localStorageUtil.get("User");
+  // const userObj: User = localStorageUtil.get("User");
 
   //   const tasksObj: Task = localStorageUtil.get("Tasks");
 
@@ -48,7 +47,6 @@ const Board = () => {
           <Button className="bg-red-500" onClick={handleLogoutClick}>
             Logout
           </Button>
-          {/* <button className="logoutBtn btn flex-end">Logout</button> */}
         </div>
       </div>
       <div className="flex h-full justify-center ">

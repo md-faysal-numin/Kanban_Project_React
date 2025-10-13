@@ -34,7 +34,7 @@ const AddTask = () => {
       [name]: value,
     });
   };
-  // console.log(formData);
+
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name } = e.target;
     const values = Array.from(
@@ -67,7 +67,6 @@ const AddTask = () => {
     });
     localStorageUtil.set("User", userObj);
 
-    console.log("Section: ", formData.section);
     if (tasksObj) {
       tasksObj[id] = {
         title: `${formData.title}`,

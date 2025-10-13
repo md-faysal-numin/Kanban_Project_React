@@ -1,7 +1,7 @@
 // import React from "react";
 
-import type { Task } from "../types";
-import localStorageUtil from "../utility/localStorageUtil";
+import { useBoard } from "../contexts/BoardProvider";
+
 import TaskBody from "./TaskBody";
 
 type TaskSectionProps = {
@@ -11,7 +11,8 @@ type TaskSectionProps = {
 
 const TaskSection = ({ title, tasksId }: TaskSectionProps) => {
   // console.log("TaskSeciont");
-  const tasksObj: Task = localStorageUtil.get("Tasks");
+  const { tasksObj } = useBoard();
+  // const tasksObj: Task = localStorageUtil.get("Tasks");
   return (
     <div className="border-2 flex-1 h-full">
       <h3 className="text-center bg-gray-500 text-xl mb-1 text-white">
