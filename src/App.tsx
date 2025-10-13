@@ -12,6 +12,7 @@ import Board from "./pages/Board";
 import BoardLayout from "./layouts/BoardLayout";
 import AddTask from "./pages/AddTask";
 import EditTask from "./pages/EditTask";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const router = createBrowserRouter(
@@ -25,8 +26,12 @@ function App() {
           <Route path="add_task" element={<AddTask />} />
           <Route path="edit_task" element={<EditTask />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
-    )
+    ),
+    {
+      basename: "/Kanban_Project_React",
+    }
   );
 
   return <RouterProvider router={router} />;
