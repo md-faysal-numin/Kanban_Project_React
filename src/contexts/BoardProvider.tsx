@@ -5,6 +5,7 @@ import localStorageUtil from "../utility/localStorageUtil";
 type BoardContextType = {
   tasksObj: Task;
   deleteTask: (taskId: string) => void;
+  setTasksObj: React.Dispatch<React.SetStateAction<Task>>;
 };
 
 const BoardContext = createContext<BoardContextType | undefined>(undefined);
@@ -22,6 +23,7 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [tasksObj, setTasksObj] = useState<Task>(
     localStorageUtil.get("Tasks") || {}
   );
+  // const [editTask, setEditTask] = useState(false);
   const userObj: User = localStorageUtil.get("User")!;
 
   const deleteTask = (taskId: string) => {
@@ -44,7 +46,7 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   };
 
   return (
-    <BoardContext.Provider value={{ deleteTask, tasksObj }}>
+    <BoardContext.Provider value={{ deleteTask, tasksObj, setTasksObj }}>
       {children}
     </BoardContext.Provider>
   );

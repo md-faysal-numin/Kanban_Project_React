@@ -4,19 +4,29 @@ import TaskInput from "../components/TaskInput";
 import { useNavigate } from "react-router-dom";
 import localStorageUtil from "../utility/localStorageUtil";
 import type { Task, User } from "../types";
+import useRedirectIfNotLoggedIn from "../utility/useRedirectIfNotLoggedIn";
+
+type FormDataType = {
+  title: string;
+  description: string;
+  assigned: string[];
+  section: string;
+};
+
 const AddTask = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  let username = sessionStorage.getItem("isLoggedIn")!;
+  const [formData, setFormData] = useState<FormDataType>({
     title: "",
     description: "",
-    assigned: [],
-    section: "",
+    assigned: [username],
+    section: "todoTasks",
   });
-
+  useRedirectIfNotLoggedIn();
   const titleEl = useRef<HTMLInputElement>(null!);
   const descriptionEl = useRef<HTMLInputElement>(null!);
   let userObj = localStorageUtil.get("User")!;
-  let username = sessionStorage.getItem("isLoggeIn")!;
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,15 +34,17 @@ const AddTask = () => {
       [name]: value,
     });
   };
+  // console.log(formData);
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name } = e.target;
     const values = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
+
     setFormData({
       ...formData,
-      [name]: name === "assigned" ? values : values[0],
+      [name]: name == "assigned" ? values.push(username) && values : values[0],
     });
   };
 
@@ -55,6 +67,7 @@ const AddTask = () => {
     });
     localStorageUtil.set("User", userObj);
 
+    console.log("Section: ", formData.section);
     if (tasksObj) {
       tasksObj[id] = {
         title: `${formData.title}`,
@@ -82,10 +95,7 @@ const AddTask = () => {
           onSubmit={handleSubmit}
         >
           <h3 className="font-bold text-2xl">Add the Task</h3>
-          {/* <div className="title-container">
-            <label htmlFor="task-title">Title:</label>
-            <input type="text" id="task-title" required />
-          </div> */}
+
           <TaskInput
             type="text"
             name="title"
@@ -107,8 +117,6 @@ const AddTask = () => {
             <select
               id="assign-user"
               multiple
-              required
-              defaultValue={[username]}
               className="bg-blue-300"
               name="assigned"
               onChange={(e) => handleSelectChange(e)}
@@ -124,10 +132,13 @@ const AddTask = () => {
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="section">Select Section</label>
-            <select name="section" id="section">
-              <option value="todoTasks" selected>
-                ToDo
-              </option>
+            <select
+              name="section"
+              id="section"
+              defaultValue="todoTasks"
+              onChange={(e) => handleSelectChange(e)}
+            >
+              <option value="todoTasks">ToDo</option>
               <option value="inProgressTasks">In Progress</option>
               <option value="testingTasks">Testing</option>
               <option value="finishedTasks">Finished</option>

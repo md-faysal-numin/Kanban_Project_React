@@ -25,11 +25,12 @@ const BoardContent = () => {
   const tasksId: string[] = [...userObj[username].task];
 
   const sections: Record<string, string[]> = {
-    todoTasks: [],
-    inProgressTasks: [],
-    testingTasks: [],
-    finishedTasks: [],
+    "todoTasks": [],
+    "inProgressTasks": [],
+    "testingTasks": [],
+    "finishedTasks": [],
   };
+  
   if (tasksObj) {
     for (let i = 0; i < tasksId.length; i++) {
       let section = tasksObj[tasksId[i]].section;

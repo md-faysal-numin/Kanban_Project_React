@@ -14,8 +14,9 @@ type TaskBodyProps = {
 const TaskBody = ({ task }: TaskBodyProps) => {
   const navigate = useNavigate();
   const { deleteTask } = useBoard();
+
   function handleEditClick() {
-    localStorage.setItem("Edit", task.taskId);
+    localStorage.setItem("Edit", String(task.taskId));
     setTimeout(() => {
       navigate("edit_task");
     }, 300);

@@ -67,8 +67,7 @@ const Register = () => {
     if (name === "email" || name === "username") {
       let key = name === "email" ? "Email" : "User";
       let obj = localStorageUtil.get(key);
-      if (obj[value]) {
-        console.log("object");
+      if (obj && obj[value]) {
         (name === "email"
           ? emailError
           : usernameError
