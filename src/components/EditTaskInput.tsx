@@ -1,4 +1,4 @@
-import type { Input, InputRefType } from "../types";
+import type { InputRefType } from "../types";
 
 type EditTaskInputProps = {
   type: string;

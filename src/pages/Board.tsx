@@ -4,7 +4,7 @@ import TaskSection from "../components/TaskSection";
 import useRedirectIfNotLoggedIn from "../utility/useRedirectIfNotLoggedIn";
 import { useNavigate } from "react-router-dom";
 import localStorageUtil from "../utility/localStorageUtil";
-import type { Task, User } from "../types";
+import type { User } from "../types";
 import { useBoard } from "../contexts/BoardProvider";
 
 const Board = () => {
@@ -25,12 +25,12 @@ const Board = () => {
   const tasksId: string[] = [...userObj[username].task];
 
   const sections: Record<string, string[]> = {
-    "todoTasks": [],
-    "inProgressTasks": [],
-    "testingTasks": [],
-    "finishedTasks": [],
+    todoTasks: [],
+    inProgressTasks: [],
+    testingTasks: [],
+    finishedTasks: [],
   };
-  
+
   if (tasksObj) {
     for (let i = 0; i < tasksId.length; i++) {
       let section = tasksObj[tasksId[i]].section;
