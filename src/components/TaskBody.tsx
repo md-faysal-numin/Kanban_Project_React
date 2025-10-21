@@ -1,7 +1,6 @@
 // import React from "react";
 import { useNavigate } from "react-router-dom";
 import type { TaskInfo } from "../types";
-import Button from "./Button";
 import { useBoard } from "../contexts/BoardProvider";
 import { Button as Buttoncn } from "./ui/button";
 type TaskProps = TaskInfo & {
