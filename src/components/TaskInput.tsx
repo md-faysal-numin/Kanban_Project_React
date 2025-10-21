@@ -24,7 +24,7 @@ const TaskInput = ({
         onChange={onChange}
         id={`${name}Input`}
         required
-        className="border-solid border-1 "
+        className="border-solid border-1 border-zinc-700"
       />
     </div>
   );

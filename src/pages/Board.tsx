@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import Button from "../components/Button";
+// import Button from "../components/Button";
 import TaskSection from "../components/TaskSection";
 import useRedirectIfNotLoggedIn from "../utility/useRedirectIfNotLoggedIn";
 import { useNavigate } from "react-router-dom";
-
+import { Button as Buttoncn } from "@/components/ui/button";
 import { useBoard } from "../contexts/BoardProvider";
 
 const Board = () => {
@@ -43,10 +43,23 @@ const Board = () => {
         <h1 className="font-bold text-3xl text-white">Kanban Board</h1>
         <h3 className="text-white text-2xl">Username: {username}</h3>
         <div className="flex gap-6">
-          <Button onClick={() => navigate("add_task")}>Add Task</Button>
-          <Button className="bg-red-500" onClick={handleLogoutClick}>
+          {/* <Button onClick={() => navigate("add_task")}>Add Task</Button> */}
+          <Buttoncn
+            onClick={() => navigate("add_task")}
+            className="cursor-pointer"
+          >
+            Add Task
+          </Buttoncn>
+          {/* <Button className="bg-red-500" onClick={handleLogoutClick}>
             Logout
-          </Button>
+          </Button> */}
+          <Buttoncn
+            variant="destructive"
+            className="cursor-pointer"
+            onClick={handleLogoutClick}
+          >
+            Logout
+          </Buttoncn>
         </div>
       </div>
       <div className="flex h-full justify-center ">

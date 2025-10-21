@@ -107,7 +107,7 @@ const EditTask = () => {
               id="assign-user"
               multiple
               required
-              className="bg-blue-300"
+              className="bg-blue-300 border-2 border-zinc-700"
               name="assigned"
               ref={assignedUsersEl}
               defaultValue={assignedUserList}
@@ -123,6 +123,7 @@ const EditTask = () => {
           <div className="flex flex-col gap-2">
             <label htmlFor="section">Select Section</label>
             <select
+              className="border-2 border-zinc-700"
               name="section"
               id="section"
               // onChange={(e) => handleSelectChange(e)}\

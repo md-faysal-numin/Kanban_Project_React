@@ -88,7 +88,7 @@ const AddTask = () => {
       <Button className="bg-violet-500" onClick={handleDashboardClick}>
         Go to DashBoard
       </Button>
-      <div className="border-2 rounded-2xl h-1/2 w-1/2">
+      <div className="border-2 border-zinc-700 rounded-2xl h-1/2 w-1/2">
         <form
           className="flex flex-col gap-3 justify-center items-center"
           onSubmit={handleSubmit}
@@ -116,7 +116,7 @@ const AddTask = () => {
             <select
               id="assign-user"
               multiple
-              className="bg-blue-300"
+              className="bg-blue-300 border-2 border-zinc-700"
               name="assigned"
               onChange={(e) => handleSelectChange(e)}
             >
@@ -132,6 +132,7 @@ const AddTask = () => {
           <div className="flex flex-col gap-2">
             <label htmlFor="section">Select Section</label>
             <select
+              className="border-2 border-zinc-700"
               name="section"
               id="section"
               defaultValue="todoTasks"

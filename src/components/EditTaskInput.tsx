@@ -8,7 +8,7 @@ type EditTaskInputProps = {
   inputRef: InputRefType;
 };
 
-const TaskInput = ({
+const EditTaskInput = ({
   type,
   title,
   name,
@@ -28,10 +28,10 @@ const TaskInput = ({
         defaultValue={value}
         id={`${name}Input`}
         required
-        className="border-solid border-1 "
+        className="border-solid border-1 border-zinc-700 p-0.5"
       />
     </div>
   );
 };
 
-export default TaskInput;
+export default EditTaskInput;

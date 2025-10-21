@@ -14,7 +14,7 @@ const TaskSection = ({ title, tasksId }: TaskSectionProps) => {
   const { tasksObj } = useBoard();
   // const tasksObj: Task = localStorageUtil.get("Tasks");
   return (
-    <div className="border-2 flex-1 h-full">
+    <div className="border-2 border-zinc-800 flex-1 min-h-dvh">
       <h3 className="text-center bg-gray-500 text-xl mb-1 text-white">
         {title}
       </h3>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type { TaskInfo } from "../types";
 import Button from "./Button";
 import { useBoard } from "../contexts/BoardProvider";
-
+import { Button as Buttoncn } from "./ui/button";
 type TaskProps = TaskInfo & {
   taskId: string;
 };
@@ -26,7 +26,7 @@ const TaskBody = ({ task }: TaskBodyProps) => {
 
   // console.log("Taskbody");
   return (
-    <div className="border-2 w-[95%] p-2 rounded-xl">
+    <div className="border-2 border-black w-[95%] p-2 rounded-xl">
       <div className="task-detail">
         <h4 className="task-title font-bold">
           Title: <span className="task-explain">{task.title}</span>
@@ -49,15 +49,26 @@ const TaskBody = ({ task }: TaskBodyProps) => {
         </p>
       </div>
       <div className="task-btn flex gap-2">
-        <Button className="text-xs" onClick={handleEditClick}>
+        {/* <Button className="text-xs" onClick={handleEditClick}>
           Edit
-        </Button>
-        <Button
-          className="bg-red-500 text-xs"
+        </Button> */}
+
+        <Buttoncn
+          className="text-xs p-3 cursor-pointer"
+          onClick={handleEditClick}
+          size="sm"
+        >
+          Edit
+        </Buttoncn>
+
+        <Buttoncn
+          className="bg-red-500 cursor-pointer"
+          size="sm"
+          variant="destructive"
           onClick={() => deleteTask(task.taskId)}
         >
           Delete
-        </Button>
+        </Buttoncn>
       </div>
     </div>
   );
